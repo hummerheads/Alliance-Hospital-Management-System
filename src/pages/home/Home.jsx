@@ -1,8 +1,11 @@
+import Banner from "./Banner";
 
 
 const Home = () => {
     return (
-        <div className="md:space-y-36 md:mb-20 space-y-14 mb-10">
+        <div className=" md:mb-20 mb-10">
+            <Banner></Banner>
+
         </div>
     );
 };
