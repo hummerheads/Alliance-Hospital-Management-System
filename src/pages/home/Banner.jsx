@@ -6,7 +6,7 @@ const Banner = () => {
           <source src="banner.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="mx-5 absolute bottom-10 w-full">
+        <div className=" absolute bottom-10 w-full">
           <div className="flex gap-5">
             <div className="w-1/6 py-5 rounded-xl mx-auto bg-white">
               <img
@@ -56,9 +56,7 @@ const Banner = () => {
             <h1></h1>
             <p></p>
         </div>
-        <div>
-            <img src="/people.png" alt="" />
-        </div>
+       
       </div>
     </div>
   );

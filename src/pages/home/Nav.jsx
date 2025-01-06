@@ -1,10 +1,63 @@
-import { Dropdown, Avatar } from "flowbite-react";
+import { useContext } from "react";
+import { Avatar } from "flowbite-react";
 import { Navbar } from "flowbite-react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/Authprovider";
+import { NavLink } from "react-router";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleRegisterClick = () => {
+    Swal.fire({
+      title: "What is your role?",
+      text: "Please select your role to proceed with registration",
+      icon: "question",
+      showCancelButton: false,
+      showConfirmButton: false,
+      html: `
+        <div class="flex flex-col gap-4">
+          <button class="swal2-confirm swal2-styled role-button" id="doctor">Doctor</button>
+          <button class="swal2-confirm swal2-styled role-button" id="patient">Patient</button>
+          <button class="swal2-confirm swal2-styled role-button" id="staff">Staff</button>
+          <button class="swal2-confirm swal2-styled role-button" id="admin">Admin</button>
+        </div>
+      `,
+    });
+
+    setTimeout(() => {
+      document.getElementById("doctor").addEventListener("click", () => {
+        window.location.href = "/register-doctor";
+      });
+      document.getElementById("patient").addEventListener("click", () => {
+        window.location.href = "/register-patient";
+      });
+      document.getElementById("staff").addEventListener("click", () => {
+        window.location.href = "/register-staff";
+      });
+      document.getElementById("admin").addEventListener("click", () => {
+        window.location.href = "/register-admin";
+      });
+    }, 0);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      Swal.fire(
+        "Logged out",
+        "You have been successfully logged out",
+        "success"
+      );
+    } catch (error) {
+      console.error(error);
+      Swal.fire("Error", "Unable to log out. Please try again.", "error");
+    }
+  };
+
   return (
     <div>
-      <Navbar fluid rounded className="h-20 pt-5">
+      <Navbar fluid rounded className="h-20 bg-gray-200 pt-5">
         <Navbar.Brand href="#">
           <img
             src="/logo.png"
@@ -12,43 +65,48 @@ const Nav = () => {
             alt="Flowbite React Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Alliance Hospitals Limiteds
+            Alliance Hospital Limited
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
+          {!user ? (
+            <div className="flex gap-4">
+              <NavLink
+                className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                to={"/login"}
+              >
+                LOGIN
+              </NavLink>
+              <button
+                className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+                onClick={handleRegisterClick}
+              >
+                REGISTER
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-4 items-center">
               <Avatar
-                alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt={user?.displayName || "User"}
+                img={user?.photoURL}
                 rounded
               />
-            }
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
-              <span className="block truncate text-sm font-medium">
-                name@flowbite.com
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
-          </Dropdown>
+              <button
+                className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          )}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link href="#" active>
-            Home
+          <Navbar.Link href="/" active>
+            HOME
           </Navbar.Link>
-          <Navbar.Link href="#">About</Navbar.Link>
-          <Navbar.Link href="#">Services</Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
+          <Navbar.Link href="#">SERVICES</Navbar.Link>
+          <Navbar.Link href="#">CONTACT</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>
