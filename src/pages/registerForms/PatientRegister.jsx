@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Authprovider";
+import axios from "axios";
 
 const PatientRegister = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const PatientRegister = () => {
     emergencyContact: "",
     password: "",
     confirmPassword: "",
+    role:"patient"
   });
 
   const handleChange = (e) => {
@@ -34,11 +36,15 @@ const PatientRegister = () => {
       await updateUserProfile({
         displayName: `${formData.firstName} ${formData.lastName}`,
       });
-      alert("Registration successful!");
-    } catch (error) {
-      console.error(error);
-      alert("Registration failed!");
-    }
+      const response = await axios.post('http://localhost:5000/patients', formData);
+      if (response.status === 201) {
+       alert("Patient registered successfully!");
+   } else {
+       alert("Failed to register Patient.");
+   }        } catch (error) {
+     console.error(error);
+     alert("Registration failed!");
+   }
   };
 
   return (

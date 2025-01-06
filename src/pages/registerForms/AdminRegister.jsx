@@ -1,6 +1,7 @@
 import 'flowbite';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/Authprovider";
+import axios from 'axios';
 
 const AdminRegister = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -35,8 +36,14 @@ const AdminRegister = () => {
           await updateUserProfile({
             displayName: `${formData.firstName} ${formData.lastName}`,
           });
-          alert("Registration successful!");
-        } catch (error) {
+
+           // Post admin details to backend API
+           const response = await axios.post('http://localhost:5000/admins', formData);
+           if (response.status === 201) {
+            alert("Admin registered successfully!");
+        } else {
+            alert("Failed to register admin.");
+        }        } catch (error) {
           console.error(error);
           alert("Registration failed!");
         }

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/Authprovider";
 import { useForm } from 'react-hook-form';
 import 'flowbite';
+import axios from "axios";
 
 const DoctorRegister = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,8 +19,14 @@ const DoctorRegister = () => {
             await updateUserProfile({
               displayName: `${data.firstName} ${data.lastName}`,
             });
-            alert("Registration successful!");
-          } catch (error) {
+            const doctorData = { ...data, role: 'doctor' };
+            const response = await axios.post('http://localhost:5000/doctors', doctorData);
+
+            if (response.status === 201) {
+                alert("Doctor registered successfully!");
+            } else {
+                alert("Failed to register doctor.");
+            }          } catch (error) {
             console.error(error);
             alert("Registration failed!");
           }
