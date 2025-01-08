@@ -6,6 +6,7 @@ import DoctorRegister from "../pages/registerForms/doctorResigter";
 import PatientRegister from "../pages/registerForms/PatientRegister";
 import AdminRegister from "../pages/registerForms/AdminRegister";
 import Login from "../pages/login/Login";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 
 
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/user",
+        element: <Dashboard></Dashboard>
       },
      
     ],
