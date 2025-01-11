@@ -31,14 +31,44 @@ const Dashboard = () => {
             </NavLink>
           </ul>
           <ul className="p-2 md:py-5 hover:bg-green-700">
-            <NavLink to="/dashboard/purchases" className="py-5">
-              Purchases
+            <NavLink to="/dashboard/report" className="py-5">
+              Report
             </NavLink>
           </ul>
 
           <ul className="p-2 md:py-5 hover:bg-green-700">
-            <NavLink to="/dashboard/reports" className="py-5">
-              Reports
+            <NavLink to="/dashboard/prescriptions" className="py-5">
+              Prescription
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/patients" className="py-5">
+              Patients
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/staffs" className="py-5">
+              Staffs
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/rooster" className="py-5">
+              Rooster
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/feedback" className="py-5">
+              Feedback
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/Doctor" className="py-5">
+              Doctor
+            </NavLink>
+          </ul>
+          <ul className="p-2 md:py-5 hover:bg-green-700">
+            <NavLink to="/dashboard/Bill" className="py-5">
+              Bill
             </NavLink>
           </ul>
           <ul

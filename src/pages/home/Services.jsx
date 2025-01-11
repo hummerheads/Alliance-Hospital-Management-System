@@ -12,7 +12,7 @@ const services = [
         details: 'Advanced heart care and cardiovascular treatments.',
     },
     {
-        image: '/public/pediatrics.jpg',
+        image: '/pediatrics.jpg',
         title: 'Pediatrics',
         details: 'Dedicated healthcare services for children. Quality Treatment',
     },
