@@ -36,7 +36,7 @@ const PatientRegister = () => {
       await updateUserProfile({
         displayName: `${formData.firstName} ${formData.lastName}`,
       });
-      const response = await axios.post('http://localhost:5000/patients', formData);
+      const response = await axios.post('http://fkw8sgsg4cwwkw84s4wgs0c8.92.112.181.229.sslip.io/patients', formData);
       if (response.status === 201) {
        alert("Patient registered successfully!");
    } else {

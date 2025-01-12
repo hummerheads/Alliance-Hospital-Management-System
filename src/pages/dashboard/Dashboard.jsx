@@ -5,7 +5,7 @@ const Dashboard = () => {
     <div>
       <div>
         <h1 className="text-4xl text-center py-5 font-bold">
-          Alliance Hospital Mnagement System
+          Alliance Hospital Management System
         </h1>
       </div>
       <div className="flex md:flex-row flex-col md:justify-center">
@@ -21,7 +21,7 @@ const Dashboard = () => {
             </NavLink>
           </ul>
           <ul className="p-2 md:py-5 hover:bg-green-700">
-            <NavLink to="/dashboard/user" className="">
+            <NavLink to="/dashboard" className="">
               Dashboard
             </NavLink>
           </ul>

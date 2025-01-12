@@ -38,7 +38,7 @@ const AdminRegister = () => {
           });
 
            // Post admin details to backend API
-           const response = await axios.post('http://localhost:5000/admins', formData);
+           const response = await axios.post('http://fkw8sgsg4cwwkw84s4wgs0c8.92.112.181.229.sslip.io/admins', formData);
            if (response.status === 201) {
             alert("Admin registered successfully!");
         } else {

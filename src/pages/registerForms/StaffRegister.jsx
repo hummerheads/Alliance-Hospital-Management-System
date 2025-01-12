@@ -24,7 +24,7 @@ const StaffRegister = () => {
       });
       const staffData = { ...data, role: "staff" };
       const response = await axios.post(
-        "http://localhost:5000/staffs",
+        "http://fkw8sgsg4cwwkw84s4wgs0c8.92.112.181.229.sslip.io/staffs",
         staffData
       );
 

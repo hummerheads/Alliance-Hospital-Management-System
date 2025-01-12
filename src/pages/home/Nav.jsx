@@ -101,13 +101,7 @@ const Nav = () => {
           )}
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse>
-          <Navbar.Link href="/" active>
-            HOME
-          </Navbar.Link>
-          <Navbar.Link href="#">SERVICES</Navbar.Link>
-          <Navbar.Link href="#">CONTACT</Navbar.Link>
-        </Navbar.Collapse>
+
       </Navbar>
     </div>
   );

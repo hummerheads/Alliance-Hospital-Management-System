@@ -20,7 +20,7 @@ const DoctorRegister = () => {
               displayName: `${data.firstName} ${data.lastName}`,
             });
             const doctorData = { ...data, role: 'doctor' };
-            const response = await axios.post('http://localhost:5000/doctors', doctorData);
+            const response = await axios.post('http://fkw8sgsg4cwwkw84s4wgs0c8.92.112.181.229.sslip.io/doctors', doctorData);
 
             if (response.status === 201) {
                 alert("Doctor registered successfully!");
